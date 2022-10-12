@@ -5,7 +5,6 @@ folder=kali-fs
 
 if [ -d "$folder" ]; then
 	first=1
-	echo "skipping downloading"
 fi
 tarball="kalifs-arm64-full.tar.xz"
 if [ "$first" != 1 ];then

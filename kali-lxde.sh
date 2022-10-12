@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 pkg install wget -y 
 folder=kali-fs
-
+dlink="https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/APT"
 
 if [ -d "$folder" ]; then
 	first=1
@@ -107,12 +107,12 @@ echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Set
 echo "#!/bin/bash
 apt update -y && apt install wget sudo -y
 clear
-echo if [ ! -f /root/lxde_de.sh ]; then
-echo    wget --tries=20 $dlink/LXDE/lxde_de.sh -O /root/lxde_de.sh
-echo    bash ~/lxde_de.sh
-echo else
-echo    bash ~/lxde_de.sh
-echo  fi
+if [ ! -f /root/lxde_de.sh ]; then
+    wget --tries=20 $dlink/LXDE/lxde_de.sh -O /root/lxde_de.sh
+    bash ~/lxde_de.sh
+else
+    bash ~/lxde_de.sh
+fi
 clear
 if [ ! -f /usr/local/bin/vncserver-start ]; then
     wget --tries=20  $dlink/LXDE/vncserver-start -O /usr/local/bin/vncserver-start
@@ -125,8 +125,8 @@ if [ ! -f /usr/bin/vncserver ]; then
 fi
 clear 
 echo 'Installing browser'
-echo apt install firefox-esr -y
-echo clear 
+apt install firefox-esr -y
+clear 
 echo 'Welcome to Andronix | Kali'
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 

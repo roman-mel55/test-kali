@@ -105,12 +105,12 @@ echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Set
 echo "#!/bin/bash
 apt update -y && apt install wget sudo -y
 clear
-echo if [ ! -f /root/lxde_de.sh ]; then
-echo    wget --tries=20 $dlink/LXDE/lxde_de.sh -O /root/lxde_de.sh
-echo    bash ~/lxde_de.sh
-echo else
-echo    bash ~/lxde_de.sh
-echo  fi
+ if [ ! -f /root/lxde_de.sh ]; then
+    wget --tries=20 $dlink/LXDE/lxde_de.sh -O /root/lxde_de.sh
+    bash ~/lxde_de.sh
+    else
+    bash ~/lxde_de.sh
+    fi
 clear
 if [ ! -f /usr/local/bin/vncserver-start ]; then
     wget --tries=20  $dlink/LXDE/vncserver-start -O /usr/local/bin/vncserver-start
